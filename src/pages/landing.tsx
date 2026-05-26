@@ -273,46 +273,183 @@ export default function Landing() {
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="relative pt-28 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-green-500 via-green-400 to-emerald-400 text-white overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-green-600/30 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 pointer-events-none opacity-10" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)', backgroundSize: '40px 40px'}} />
+      {/* Hero — RPG Gaming Dark Theme */}
+      <section className="relative min-h-screen pt-20 pb-0 bg-gray-950 text-white overflow-hidden flex flex-col">
+        {/* RGB ambient glow orbs */}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full pointer-events-none blur-[120px] opacity-20" style={{background: 'radial-gradient(circle, rgba(34,197,94,1) 0%, transparent 70%)'}} />
+        <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none blur-[100px] opacity-15" style={{background: 'radial-gradient(circle, rgba(59,130,246,1) 0%, transparent 70%)'}} />
+        <div className="absolute bottom-1/4 left-1/3 w-[300px] h-[300px] rounded-full pointer-events-none blur-[80px] opacity-10" style={{background: 'radial-gradient(circle, rgba(168,85,247,1) 0%, transparent 70%)'}} />
+        {/* Scanline overlay */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,1) 2px, rgba(255,255,255,1) 3px)', backgroundSize: '100% 3px'}} />
+        {/* Grid lines */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.06]" style={{backgroundImage: 'linear-gradient(rgba(34,197,94,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(34,197,94,0.6) 1px, transparent 1px)', backgroundSize: '60px 60px'}} />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-1.5 text-sm font-bold">
-            <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
-            $2.4M+ Paid Out to Real Users
+        <div className="relative z-10 flex-1 flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+            {/* Left — Text + CTA */}
+            <div className="space-y-7">
+              <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/30 rounded-full px-4 py-1.5 text-sm font-bold text-primary">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                $2.4M+ Paid Out to Real Users
+              </div>
+
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.9] drop-shadow-sm">
+                Earn Real{" "}
+                <span className="relative inline-block">
+                  <span className="text-transparent bg-clip-text" style={{backgroundImage: 'linear-gradient(135deg, #22c55e 0%, #4ade80 40%, #86efac 100%)'}}>USDT</span>
+                  <span className="absolute -inset-1 rounded-lg blur-md opacity-40" style={{background: 'linear-gradient(135deg, #22c55e, #4ade80)'}} />
+                </span>
+                <br />From Your Phone
+              </h1>
+
+              <p className="text-base md:text-lg text-gray-400 max-w-lg leading-relaxed">
+                Complete premium offers, play games, and withdraw crypto directly to your wallet — no investment, no limits, no tricks.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 pt-1">
+                <Link href="/register">
+                  <Button size="lg" className="font-black text-base px-8 h-13 w-full sm:w-auto group border-0 text-gray-950" style={{background: 'linear-gradient(135deg, #22c55e 0%, #4ade80 100%)', boxShadow: '0 0 30px rgba(34,197,94,0.4), 0 4px 20px rgba(34,197,94,0.3)'}}>
+                    Start Earning Free
+                    <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+                <Link href="/login">
+                  <Button size="lg" className="bg-white/8 backdrop-blur-sm border border-white/15 text-white hover:bg-white/15 font-bold h-13 px-8 w-full sm:w-auto">
+                    I Have an Account
+                  </Button>
+                </Link>
+              </div>
+
+              <div className="flex flex-wrap gap-5 text-sm text-gray-500 pt-1">
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-primary" /> Free to join</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-primary" /> No credit card</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-primary" /> Instant withdrawals</span>
+              </div>
+
+              {/* Mini stats row */}
+              <div className="flex flex-wrap gap-6 pt-2 border-t border-white/8">
+                {stats.map((s) => (
+                  <div key={s.label}>
+                    <div className="text-xl font-black text-white">{s.value}</div>
+                    <div className="text-[10px] text-gray-500 uppercase tracking-widest">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right — Game Cards Showcase */}
+            <div className="relative flex flex-col gap-3 lg:translate-y-4">
+              {/* Main large game card — Dream Dice style */}
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(34,197,94,0.15)] group" style={{background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)'}}>
+                <img
+                  src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=800&q=85"
+                  alt="Dream Dice"
+                  className="w-full h-52 object-cover opacity-75 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/40 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full border" style={{color: '#22c55e', borderColor: 'rgba(34,197,94,0.4)', background: 'rgba(34,197,94,0.1)'}}>Featured</span>
+                      <span className="text-[10px] text-gray-400 font-bold">MyChips</span>
+                    </div>
+                    <h3 className="text-lg font-black text-white">Dream Dice</h3>
+                    <p className="text-xs text-gray-400">Roll to earn — instant USDT rewards</p>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <div className="text-xs text-gray-500">Reward</div>
+                    <div className="text-base font-black text-primary">+$12.50</div>
+                  </div>
+                </div>
+                {/* Live badge */}
+                <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm border border-white/10 rounded-full px-2.5 py-1">
+                  <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+                  <span className="text-[10px] font-bold text-white">LIVE</span>
+                </div>
+              </div>
+
+              {/* Bottom row — 3 small game cards */}
+              <div className="grid grid-cols-3 gap-3">
+                {/* RPG Game */}
+                <div className="relative rounded-xl overflow-hidden border border-white/10 group cursor-pointer hover:border-primary/40 hover:shadow-[0_0_20px_rgba(34,197,94,0.2)] transition-all duration-300">
+                  <img
+                    src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&q=80"
+                    alt="RPG Battle"
+                    className="w-full h-24 object-cover opacity-70 group-hover:opacity-90 group-hover:scale-110 transition-all duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-transparent to-transparent" />
+                  <div className="absolute bottom-1.5 left-2 right-2">
+                    <div className="text-[9px] font-black text-white truncate">RPG Quest</div>
+                    <div className="text-[9px] font-bold" style={{color: '#4ade80'}}>+$8.00</div>
+                  </div>
+                  <div className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-purple-500/80 flex items-center justify-center">
+                    <Zap className="w-2.5 h-2.5 text-white" />
+                  </div>
+                </div>
+
+                {/* Strategy Game */}
+                <div className="relative rounded-xl overflow-hidden border border-white/10 group cursor-pointer hover:border-primary/40 hover:shadow-[0_0_20px_rgba(34,197,94,0.2)] transition-all duration-300">
+                  <img
+                    src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&q=80"
+                    alt="Strategy"
+                    className="w-full h-24 object-cover opacity-70 group-hover:opacity-90 group-hover:scale-110 transition-all duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-transparent to-transparent" />
+                  <div className="absolute bottom-1.5 left-2 right-2">
+                    <div className="text-[9px] font-black text-white truncate">MyChips</div>
+                    <div className="text-[9px] font-bold" style={{color: '#4ade80'}}>+$5.25</div>
+                  </div>
+                  <div className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-blue-500/80 flex items-center justify-center">
+                    <Star className="w-2.5 h-2.5 text-white" />
+                  </div>
+                </div>
+
+                {/* Action Game */}
+                <div className="relative rounded-xl overflow-hidden border border-white/10 group cursor-pointer hover:border-primary/40 hover:shadow-[0_0_20px_rgba(34,197,94,0.2)] transition-all duration-300">
+                  <img
+                    src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&q=80"
+                    alt="Action"
+                    className="w-full h-24 object-cover opacity-70 group-hover:opacity-90 group-hover:scale-110 transition-all duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-transparent to-transparent" />
+                  <div className="absolute bottom-1.5 left-2 right-2">
+                    <div className="text-[9px] font-black text-white truncate">Action XP</div>
+                    <div className="text-[9px] font-bold" style={{color: '#4ade80'}}>+$6.75</div>
+                  </div>
+                  <div className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-red-500/80 flex items-center justify-center">
+                    <TrendingUp className="w-2.5 h-2.5 text-white" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Earnings ticker bar */}
+              <div className="flex items-center justify-between bg-white/5 border border-white/10 rounded-xl px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.3)'}}>
+                    <Coins className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="text-xs text-gray-400 font-medium">Live Payouts</span>
+                </div>
+                <div className="flex items-center gap-3 overflow-hidden">
+                  <span className="text-xs text-gray-500 whitespace-nowrap" style={{animation: 'marquee 12s linear infinite'}}>
+                    {["Ahmed +$3.20", "Youssef +$7.50", "Khaled +$12.00", "Sara +$4.80", "Omar +$9.30"].join(" · ")}
+                  </span>
+                </div>
+                <div className="flex items-center gap-1 shrink-0">
+                  <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+                  <span className="text-[10px] text-primary font-bold">LIVE</span>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-none drop-shadow-sm">
-            Earn Real <span className="bg-white/20 backdrop-blur-sm rounded-xl px-3 py-1">USDT</span><br />
-            From Your Phone
-          </h1>
-
-          <p className="text-lg md:text-xl text-green-50 max-w-2xl mx-auto leading-relaxed">
-            Complete premium offers, play games, and withdraw crypto directly to your wallet — no investment, no limits, no tricks.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <Link href="/register">
-              <Button size="lg" className="bg-white text-primary hover:bg-green-50 font-black text-lg px-10 h-14 shadow-xl w-full sm:w-auto group border-0">
-                Start Earning Free
-                <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-            <Link href="/login">
-              <Button size="lg" className="bg-white/15 backdrop-blur-sm border border-white/40 text-white hover:bg-white/25 font-bold h-14 px-8 w-full sm:w-auto">
-                I Have an Account
-              </Button>
-            </Link>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-5 text-sm text-green-100 pt-1">
-            <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-white" /> Free to join</span>
-            <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-white" /> No credit card</span>
-            <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-white" /> Instant withdrawals</span>
-          </div>
+        {/* Bottom wave into next section */}
+        <div className="relative z-10 w-full overflow-hidden leading-none">
+          <svg viewBox="0 0 1440 60" className="w-full block" preserveAspectRatio="none" style={{height: '60px'}}>
+            <path d="M0,60 L0,30 Q360,0 720,30 Q1080,60 1440,30 L1440,60 Z" fill="white" />
+          </svg>
         </div>
       </section>
 
