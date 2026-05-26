@@ -19,13 +19,13 @@ const registerSchema = z.object({
 });
 type RegisterFormValues = z.infer<typeof registerSchema>;
 
-function CachvioLogo() {
+function SiteLogo() {
   return (
     <div className="flex items-center justify-center gap-2">
-      <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shadow-[0_4px_14px_rgba(249,115,22,0.4)]">
+      <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shadow-[0_4px_14px_rgba(34,197,94,0.4)]">
         <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="white" strokeLinejoin="round"/></svg>
       </div>
-      <span className="text-2xl font-black tracking-tight text-foreground">Cach<span className="text-primary">vio</span></span>
+      <span className="text-2xl font-black tracking-tight text-foreground">humam <span className="text-primary">khador</span></span>
     </div>
   );
 }
@@ -39,22 +39,22 @@ export default function Register() {
 
   const registerMutation = useMutation({
     mutationFn: (data: RegisterFormValues) => customFetch<AuthResponse>("/api/auth/register", { method: "POST", body: JSON.stringify(data) }),
-    onSuccess: (res) => { setToken(res.token); toast({ title: "Welcome to Cachvio!" }); setLocation("/dashboard"); },
+    onSuccess: (res) => { setToken(res.token); toast({ title: "Welcome to humam khador!" }); setLocation("/dashboard"); },
     onError: (error: any) => { toast({ variant: "destructive", title: "Registration failed", description: error.data?.error || error.message }); },
   });
 
   return (
     <div className="min-h-screen bg-white flex">
       {/* Left decorative */}
-      <div className="hidden lg:flex flex-1 bg-gradient-to-br from-orange-500 via-orange-400 to-amber-400 items-center justify-center p-12 relative overflow-hidden">
+      <div className="hidden lg:flex flex-1 bg-gradient-to-br from-green-500 via-green-400 to-emerald-400 items-center justify-center p-12 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none opacity-10" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)', backgroundSize: '40px 40px'}} />
         <div className="relative z-10 text-white text-center space-y-6 max-w-sm">
-          <CachvioLogo />
+          <SiteLogo />
           <h2 className="text-3xl font-black">Start Earning Today</h2>
-          <p className="text-orange-100 text-lg">Create your free account and start withdrawing USDT in minutes.</p>
+          <p className="text-green-100 text-lg">Create your free account and start withdrawing USDT in minutes.</p>
           <div className="space-y-3 text-left">
             {perks.map(t => (
-              <div key={t} className="flex items-center gap-3 text-orange-50 text-sm">
+              <div key={t} className="flex items-center gap-3 text-green-50 text-sm">
                 <CheckCircle2 className="h-5 w-5 text-white shrink-0" />{t}
               </div>
             ))}
@@ -66,7 +66,7 @@ export default function Register() {
       <div className="flex-1 lg:max-w-md flex flex-col items-center justify-center px-8 py-12">
         <div className="w-full max-w-sm">
           <div className="mb-8 text-center lg:text-left">
-            <div className="lg:hidden mb-6"><CachvioLogo /></div>
+            <div className="lg:hidden mb-6"><SiteLogo /></div>
             <h1 className="text-2xl font-black text-foreground">Create Account</h1>
             <p className="text-muted-foreground mt-1 text-sm">Join thousands of users earning USDT daily.</p>
           </div>
@@ -94,7 +94,7 @@ export default function Register() {
                   <FormMessage />
                 </FormItem>
               )} />
-              <Button type="submit" className="w-full h-11 text-white font-bold shadow-[0_2px_12px_rgba(249,115,22,0.3)] mt-1" disabled={registerMutation.isPending}>
+              <Button type="submit" className="w-full h-11 text-white font-bold shadow-[0_2px_12px_rgba(34,197,94,0.3)] mt-1" disabled={registerMutation.isPending}>
                 {registerMutation.isPending ? <Loader2 className="animate-spin h-5 w-5" /> : "Create Free Account"}
               </Button>
             </form>

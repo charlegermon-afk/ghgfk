@@ -13,13 +13,13 @@ import { Loader2 } from "lucide-react";
 const loginSchema = z.object({ email: z.string().email("Invalid email"), password: z.string().min(1, "Required") });
 type LoginFormValues = z.infer<typeof loginSchema>;
 
-function CachvioLogo() {
+function SiteLogo() {
   return (
     <div className="flex items-center justify-center gap-2">
-      <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shadow-[0_4px_14px_rgba(249,115,22,0.4)]">
+      <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shadow-[0_4px_14px_rgba(34,197,94,0.4)]">
         <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="white" strokeLinejoin="round"/></svg>
       </div>
-      <span className="text-2xl font-black tracking-tight text-foreground">Cach<span className="text-primary">vio</span></span>
+      <span className="text-2xl font-black tracking-tight text-foreground">humam <span className="text-primary">khador</span></span>
     </div>
   );
 }
@@ -40,15 +40,15 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-white flex">
       {/* Left decorative panel */}
-      <div className="hidden lg:flex flex-1 bg-gradient-to-br from-orange-500 via-orange-400 to-amber-400 items-center justify-center p-12 relative overflow-hidden">
+      <div className="hidden lg:flex flex-1 bg-gradient-to-br from-green-500 via-green-400 to-emerald-400 items-center justify-center p-12 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none opacity-10" style={{backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)', backgroundSize: '40px 40px'}} />
         <div className="relative z-10 text-white text-center space-y-6 max-w-sm">
-          <CachvioLogo />
+          <SiteLogo />
           <h2 className="text-3xl font-black">Welcome Back</h2>
-          <p className="text-orange-100 text-lg">Sign in and continue earning USDT from your favorite offerwalls.</p>
+          <p className="text-green-100 text-lg">Sign in and continue earning USDT from your favorite offerwalls.</p>
           <div className="space-y-3 text-left">
             {["Access your balance anytime", "Track all your earnings", "Withdraw to any wallet"].map(t => (
-              <div key={t} className="flex items-center gap-3 text-orange-50 text-sm">
+              <div key={t} className="flex items-center gap-3 text-green-50 text-sm">
                 <div className="w-5 h-5 rounded-full bg-white/25 flex items-center justify-center shrink-0">
                   <svg viewBox="0 0 12 12" className="w-3 h-3"><path d="M2 6l3 3 5-5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg>
                 </div>
@@ -63,7 +63,7 @@ export default function Login() {
       <div className="flex-1 lg:max-w-md flex flex-col items-center justify-center px-8 py-12">
         <div className="w-full max-w-sm">
           <div className="mb-8 text-center lg:text-left">
-            <div className="lg:hidden mb-6"><CachvioLogo /></div>
+            <div className="lg:hidden mb-6"><SiteLogo /></div>
             <h1 className="text-2xl font-black text-foreground">Sign In</h1>
             <p className="text-muted-foreground mt-1 text-sm">Enter your credentials to access your account.</p>
           </div>
@@ -87,14 +87,14 @@ export default function Login() {
                   <FormMessage />
                 </FormItem>
               )} />
-              <Button type="submit" className="w-full h-11 text-white font-bold shadow-[0_2px_12px_rgba(249,115,22,0.3)]" disabled={loginMutation.isPending}>
+              <Button type="submit" className="w-full h-11 text-white font-bold shadow-[0_2px_12px_rgba(34,197,94,0.3)]" disabled={loginMutation.isPending}>
                 {loginMutation.isPending ? <Loader2 className="animate-spin h-5 w-5" /> : "Sign In"}
               </Button>
             </form>
           </Form>
 
           <div className="mt-6 text-center text-sm text-muted-foreground">
-            New to Cachvio?{" "}
+            New to humam khador?{" "}
             <Link href="/register"><span className="text-primary hover:underline cursor-pointer font-semibold">Create account</span></Link>
           </div>
         </div>
